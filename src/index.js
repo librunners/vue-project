@@ -8,11 +8,17 @@ import "../lib/mui/css/mui.min.css";
 import "../lib/mui/css/icons-extra.css";
 
 //按需加载mintui组件
-import { Header } from "mint-ui";
+import { Header, Swipe, SwipeItem } from "mint-ui";
 import "mint-ui/lib/style.css";
 
+//安装ajax请求组件 vue-resource
+import VuerResource from "vue-resource";
+
 Vue.use(VueRouter);
+Vue.use(VuerResource);
 Vue.component(Header.name, Header);
+Vue.component(Swipe.name, Swipe);
+Vue.component(SwipeItem.name, SwipeItem);
 
 new Vue({
   el: "#app",
