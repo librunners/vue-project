@@ -31,6 +31,7 @@
     "invariant": "^2.2.4",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
+    "moment": "^2.23.0",
     "node-sass": "^4.11.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",

@@ -14,11 +14,21 @@ import "mint-ui/lib/style.css";
 //安装ajax请求组件 vue-resource
 import VuerResource from "vue-resource";
 
+//安装时间格式化插件
+import moment from 'moment'
+
 Vue.use(VueRouter);
 Vue.use(VuerResource);
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+
+Vue.http.options.root = "http://www.liulongbin.top:3005"
+
+//定义全局时间过滤器
+Vue.filter('dateFormat', function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
+  return moment(dataStr).format(pattern);
+})
 
 new Vue({
   el: "#app",

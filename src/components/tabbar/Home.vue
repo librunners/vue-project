@@ -1,20 +1,17 @@
 <template>
   <div>
     <mt-swipe :auto="1000" :speed="1000">
-      <mt-swipe-item v-for="item in lunbotuList" :key="item.src">
-        <img :src="item.src">
+      <mt-swipe-item v-for="item in lunbotuList" :key="item.img">
+        <img :src="item.img">
       </mt-swipe-item>
-      <mt-swipe-item>1</mt-swipe-item>
-      <mt-swipe-item>2</mt-swipe-item>
-      <mt-swipe-item>3</mt-swipe-item>
     </mt-swipe>
 
     <ul class="mui-table-view mui-grid-view mui-grid-9">
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <a href="#">
+        <router-link to="/home/newslist" tag="a">
           <img src="../../images/menu1.png">
           <div class="mui-media-body">新闻资讯</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
         <a href="#">
@@ -60,14 +57,15 @@ export default {
     };
   },
   created() {
-    // this.getlunbotu();
+    this.getlunbotu();
   },
   methods: {
     getlunbotu() {
       this.$http
-        .get("http://vue.studyit.io/api/getlunbo")
+        .get("api/getlunbo")
         .then(result => {
-          if (result.body.status === 0) {
+          console.log(result);
+          if (result.status === 200) {
             this.lunbotuList = result.body.message;
           } else {
             Toast("加载失败");
