@@ -8,7 +8,7 @@ import "../lib/mui/css/mui.min.css";
 import "../lib/mui/css/icons-extra.css";
 
 //按需加载mintui组件
-import { Header, Swipe, SwipeItem } from "mint-ui";
+import { Header, Swipe, SwipeItem, Button } from "mint-ui";
 import "mint-ui/lib/style.css";
 
 //安装ajax请求组件 vue-resource
@@ -22,6 +22,7 @@ Vue.use(VuerResource);
 Vue.component(Header.name, Header);
 Vue.component(Swipe.name, Swipe);
 Vue.component(SwipeItem.name, SwipeItem);
+Vue.component(Button.name, Button);
 
 Vue.http.options.root = "http://www.liulongbin.top:3005"
 

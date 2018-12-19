@@ -83,7 +83,7 @@ export default {
 .mint-swipe {
   height: 200px;
   background-color: bisque;
-  .mt-swipe-item {
+  .mint-swipe-item {
     img {
       width: 100%;
       height: 100%;
@@ -92,18 +92,13 @@ export default {
 }
 .mui-grid-view.mui-grid-9 {
   background-color: #fff;
-
-  li {
-    border: none;
-  }
-
+  border: none;
   img {
     width: 60px;
     height: 60px;
   }
 }
-
-.mui-media-body {
+div.mui-media-body {
   font-size: 13px;
 }
 </style>

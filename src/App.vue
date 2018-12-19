@@ -43,4 +43,9 @@
 .v-leave-active {
   transition: all 0.5s ease;
 }
+.app-container {
+  padding-top: 40px;
+  padding-bottom: 50px;
+  overflow-x: hidden;
+}
 </style>
