@@ -5,3 +5,5 @@
 - 安装 Mint UI 和 MUI `npm install mint-ui -S`
 
 - 使用 Header 和 Tabbar
+
+- 使用 babel-plugin-transform-remove-strict-mode

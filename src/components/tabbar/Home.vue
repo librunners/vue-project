@@ -14,10 +14,10 @@
         </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
-        <a href="#">
+        <router-link to="/home/photolist" tag="a">
           <img src="../../images/menu2.png">
           <div class="mui-media-body">图片分享</div>
-        </a>
+        </router-link>
       </li>
       <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-4">
         <a href="#">
@@ -98,7 +98,8 @@ export default {
     height: 60px;
   }
 }
-div.mui-media-body {
-  font-size: 13px;
+
+.mui-media-body {
+  font-size: 12px;
 }
 </style>
