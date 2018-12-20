@@ -25,13 +25,17 @@ import VuerResource from "vue-resource";
 //安装时间格式化插件
 import moment from "moment";
 
+//安装缩略图插件
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
+
 Vue.use(VueRouter);
 Vue.use(VuerResource);
 
 Vue.http.options.root = "http://www.liulongbin.top:3005";
 
 //定义全局时间过滤器
-Vue.filter("dateFormat", function(dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
+Vue.filter("dateFormat", function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
   return moment(dataStr).format(pattern);
 });
 
