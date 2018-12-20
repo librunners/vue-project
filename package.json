@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server",
-    "dev1": "webpack-dev-server --open --port 3000 --contentBase src --hot",
+    "dev1": "webpack-dev-server --open --port 3000 --contentBase src --hot --host 192.168.191.1",
     "build": "webpack --mode production"
   },
   "keywords": [],
