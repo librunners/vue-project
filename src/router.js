@@ -4,10 +4,11 @@ import Member from "./components/tabbar/Member.vue";
 import Shopcar from "./components/tabbar/Shopcar.vue";
 import Search from "./components/tabbar/Search.vue";
 import NewsList from "./components/news/NewsList.vue";
-import NewsInfo from './components/news/NewsInfo.vue'
+import NewsInfo from "./components/news/NewsInfo.vue";
 import PhotoList from "./components/photos/PhotoList.vue";
 import Photoinfo from "./components/photos/PhotoInfo.vue";
-import GoodsList from './components/goods/GoodsList.vue'
+import GoodsList from "./components/goods/GoodsList.vue";
+import GoodsInfo from "./components/goods/GoodsInfo.vue";
 
 var routes = new VueRouter({
   routes: [
@@ -20,7 +21,8 @@ var routes = new VueRouter({
     { path: "/home/newslist/:id", component: NewsInfo },
     { path: "/home/PhotoList", component: PhotoList },
     { path: "/home/photoinfo/:id", component: Photoinfo },
-    { path: "/home/goodslist", component: GoodsList }
+    { path: "/home/goodslist", component: GoodsList },
+    { path: "/home/goodsinfo/:id", component: GoodsInfo }
   ],
   linkActiveClass: "mui-active"
 });

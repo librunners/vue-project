@@ -1,107 +1,60 @@
 <template>
   <div class="goods-container">
-    <div class="goods-item">
-      <img src="http://demo.dtcms.net/upload/201504/20/thumb_201504200046589514.jpg" alt>
-      <h1 class="title">华为（HUAWEI）荣耀6Plus 16G双4G版</h1>
+    <router-link
+      tag="div"
+      :to="'/home/goodsinfo/'+item.id"
+      class="goods-item"
+      v-for="item in goodsList"
+      :key="item.id"
+    >
+      <img :src="item.img_url">
+      <h1 class="title">{{ item.title }}</h1>
       <div class="info">
         <p class="price">
-          <span class="new">￥1299</span>
-          <span class="old">￥1999</span>
+          <span class="new">￥{{ item.sell_price }}</span>
+          <span class="old">￥{{ item.market_price }}</span>
         </p>
         <p class="remark">
           <span>热卖中</span>
-          <span>剩300件</span>
+          <span>剩{{ item.stock_quantity }}件</span>
         </p>
       </div>
-    </div>
-    <div class="goods-item">
-      <img src="http://demo.dtcms.net/upload/201504/20/thumb_201504200046589514.jpg" alt>
-      <h1 class="title">华为（HUAWEI）荣耀6Plus 16G双4G版华为（HUAWEI）荣耀6Plus 16G双4G版</h1>
-      <div class="info">
-        <p class="price">
-          <span class="new">￥1299</span>
-          <span class="old">￥1999</span>
-        </p>
-        <p class="remark">
-          <span>热卖中</span>
-          <span>剩300件</span>
-        </p>
-      </div>
-    </div>
-    <div class="goods-item">
-      <img src="http://demo.dtcms.net/upload/201504/20/thumb_201504200046589514.jpg" alt>
-      <h1 class="title">华为（HUAWEI）荣耀6Plus 16G双4G版</h1>
-      <div class="info">
-        <p class="price">
-          <span class="new">￥1299</span>
-          <span class="old">￥1999</span>
-        </p>
-        <p class="remark">
-          <span>热卖中</span>
-          <span>剩300件</span>
-        </p>
-      </div>
-    </div>
-    <div class="goods-item">
-      <img src="http://demo.dtcms.net/upload/201504/20/thumb_201504200046589514.jpg" alt>
-      <h1 class="title">华为（HUAWEI）荣耀6Plus 16G双4G版</h1>
-      <div class="info">
-        <p class="price">
-          <span class="new">￥1299</span>
-          <span class="old">￥1999</span>
-        </p>
-        <p class="remark">
-          <span>热卖中</span>
-          <span>剩300件</span>
-        </p>
-      </div>
-    </div>
-    <div class="goods-item">
-      <img src="http://demo.dtcms.net/upload/201504/20/thumb_201504200046589514.jpg" alt>
-      <h1 class="title">华为（HUAWEI）荣耀6Plus 16G双4G版</h1>
-      <div class="info">
-        <p class="price">
-          <span class="new">￥1299</span>
-          <span class="old">￥1999</span>
-        </p>
-        <p class="remark">
-          <span>热卖中</span>
-          <span>剩300件</span>
-        </p>
-      </div>
-    </div>
-    <div class="goods-item">
-      <img src="http://demo.dtcms.net/upload/201504/20/thumb_201504200046589514.jpg" alt>
-      <h1 class="title">华为（HUAWEI）荣耀6Plus 16G双4G版</h1>
-      <div class="info">
-        <p class="price">
-          <span class="new">￥1299</span>
-          <span class="old">￥1999</span>
-        </p>
-        <p class="remark">
-          <span>热卖中</span>
-          <span>剩300件</span>
-        </p>
-      </div>
-    </div>
-    <div class="goods-item">
-      <img src="http://demo.dtcms.net/upload/201504/20/thumb_201504200046589514.jpg" alt>
-      <h1 class="title">华为（HUAWEI）荣耀6Plus 16G双4G版</h1>
-      <div class="info">
-        <p class="price">
-          <span class="new">￥1299</span>
-          <span class="old">￥1999</span>
-        </p>
-        <p class="remark">
-          <span>热卖中</span>
-          <span>剩300件</span>
-        </p>
-      </div>
-    </div>
+    </router-link>
+    <mt-button type="danger" plain size="large" @click="getMore">加载更多</mt-button>
   </div>
 </template>
 
 <script>
+export default {
+  data() {
+    return {
+      pageIndex: 1,
+      goodsList: []
+    };
+  },
+  created() {
+    this.getGoodsList();
+  },
+  methods: {
+    getGoodsList() {
+      this.$http
+        .get("api/getgoods?pageindex=" + this.pageIndex)
+        .then(result => {
+          console.log("tag", result);
+          if (result.body.status == 0) {
+            this.goodsList = this.goodsList.concat(result.body.message);
+          } else {
+            Toast("获取商品列表失败");
+          }
+        })
+        .catch(err => {});
+    },
+    getMore() {
+      this.pageIndex++;
+      this.getGoodsList();
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
