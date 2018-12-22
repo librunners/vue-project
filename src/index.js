@@ -4,8 +4,8 @@ import VueRouter from "vue-router";
 import router from "./router.js";
 
 //加载mui组件
-import "../lib/mui/css/mui.min.css";
-import "../lib/mui/css/icons-extra.css";
+import "./lib/mui/css/mui.min.css";
+import "./lib/mui/css/icons-extra.css";
 
 // //按需加载mintui组件 导致小图标无法使用
 // import { Header, Swipe, SwipeItem, Button, Lazyload } from "mint-ui";
@@ -26,8 +26,8 @@ import VuerResource from "vue-resource";
 import moment from "moment";
 
 //安装缩略图插件
-import VuePreview from 'vue-preview'
-Vue.use(VuePreview)
+import VuePreview from "vue-preview";
+Vue.use(VuePreview);
 
 Vue.use(VueRouter);
 Vue.use(VuerResource);
@@ -35,7 +35,7 @@ Vue.use(VuerResource);
 Vue.http.options.root = "http://www.liulongbin.top:3005";
 
 //定义全局时间过滤器
-Vue.filter("dateFormat", function (dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
+Vue.filter("dateFormat", function(dataStr, pattern = "YYYY-MM-DD HH:mm:ss") {
   return moment(dataStr).format(pattern);
 });
 
