@@ -1,6 +1,10 @@
 <template>
   <div class="app-container">
-    <mt-header fixed title="Vue 项目"></mt-header>
+    <mt-header fixed title="Vue 项目">
+      <span slot="left" @click="goBack" v-show="flag">
+        <mt-button icon="back">返回</mt-button>
+      </span>
+    </mt-header>
     <transition>
       <router-view></router-view>
     </transition>
@@ -15,7 +19,7 @@
       </router-link>
       <router-link to="/shopcar" tag="a" class="mui-tab-item-my">
         <span class="mui-icon mui-icon-extra mui-icon-extra-cart">
-          <span class="mui-badge" id="badge">0</span>
+          <span class="mui-badge" id="badge">{{ $store.getters.getAllTotal }}</span>
         </span>
         <span class="mui-tab-label">购物车</span>
       </router-link>
@@ -26,7 +30,33 @@
     </nav>
   </div>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      flag: false
+    };
+  },
+  created() {
+    this.flag = this.$route.path === "/home" ? false : true;
+  },
+  methods: {
+    goBack() {
+      // 点击后退
+      this.$router.go(-1);
+    }
+  },
+  watch: {
+    "$route.path": function(newVal) {
+      if (newVal === "/home") {
+        this.flag = false;
+      } else {
+        this.flag = true;
+      }
+    }
+  }
+};
+</script>
 <style scoped>
 .mint-header.is-fixed {
   z-index: 99;

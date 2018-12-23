@@ -1,7 +1,14 @@
 <template>
   <div class="mui-numbox" data-numbox-min="1">
     <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-    <input class="mui-input-numbox" type="number" @change="countChanged" ref="numbox" value="1">
+    <input
+      @change="countChanged"
+      class="mui-input-numbox"
+      type="number"
+      ref="numbox"
+      :value="total"
+      id
+    >
     <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
   </div>
 </template>
@@ -14,17 +21,14 @@ export default {
   },
   methods: {
     countChanged() {
-      this.$emit("getcount", parseInt(this.$refs.numbox.value));
+      //需要将这个同步到store中
+      this.$store.commit("updateGoodsInfo", {
+        id: this.goodsid,
+        total: this.$refs.numbox.value
+      });
     }
   },
-  props: ["max"],
-  watch: {
-    max: function(newVal, oldVal) {
-      mui(".mui-numbox")
-        .numbox()
-        .setOption("max", newVal);
-    }
-  }
+  props: ["total", "goodsid"]
 };
 </script>
 
